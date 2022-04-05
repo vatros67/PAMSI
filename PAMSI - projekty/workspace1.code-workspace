@@ -1,0 +1,16 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "..\\PO"
+        }
+    ],
+    "settings": {
+        "makefile.extensionOutputFolder": "./.vscode",
+        "files.associations": {
+            "iostream": "cpp"
+        }
+    }
+}
