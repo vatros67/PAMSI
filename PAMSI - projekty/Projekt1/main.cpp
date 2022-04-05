@@ -21,21 +21,23 @@ message * podzial(string wiadWE, int n){
 
     //cout<<"Faza 1";
    if(reszta == 0){
-       //cout<<"Podzielna"; //spr czy wiadomosc jest podzielna na n czesci 
+       //cout<<"Podzielna"; 
+       //spr czy wiadomosc jest podzielna na n czesci 
      while(start < dlugosc){
             pom.nr=i+1;
-            pom.wiadomosc=wiadWE.substr(start, czesci); // funkcja substr zwraca stringa, ktory jest czescia argumentu od miejsca start do start + czesci lub do konca wejsciowego
+            pom.wiadomosc=wiadWE.substr(start, czesci); // funkcja substr zwraca stringa, ktory jest czescia argumentu od miejsca start do start + czesci
             tab[i]=pom;
             start+=czesci;
             i++;
         }
         //cout<<"Podzielna udane";
    }else{ 
-        //cout<<"niepodzielna"; //jesli nie do pierwszej czesci jest dodawane tyle znakow by reszta byla podzielna
+        //cout<<"niepodzielna";
+         //jesli nie do pierwszej czesci jest dodawane tyle znakow by reszta byla podzielna
         do//gdy wiadomosc jest niepodzielna funkcja dodaje po jednym znaku do pierwszych czesci podzielonej wiadomosci az do zniwelowania reszty z dzielenia
         {
         pom.nr=i+1;
-        pom.wiadomosc=wiadWE.substr(start, (czesci+1)); // funkcja substr zwraca stringa, ktory jest czescia argumentu od miejsca start do start + czesci lub do konca wejsciowego
+        pom.wiadomosc=wiadWE.substr(start, (czesci+1)); 
         tab[i]=pom;
         start+=(czesci+1);
         i++;
