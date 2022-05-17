@@ -369,7 +369,14 @@ movie* stworz_tablice(int rozmiar){
 }
 
 main(){
-    int roz = 962903;
+int roz;
+while(1){
+    cout<<"Podaj liczbe danych do posortowania\n MAX:962902; Wyjscie z programu - podaj 0\n Liczba danych do posortowania: ";
+    cin>>roz;
+    if(roz<=0||roz>=962902){
+        break;
+    }
+    else{
    // stworz_plik();
     movie* tablica = new movie[7];
     tablica[0].name='a';tablica[0].rate=6;
@@ -421,6 +428,8 @@ main(){
     time_end = (double)clock();
     cout<<"Algorytmowi mergesort posortowanie zajelo: "<<(time_end - time_start)/(CLOCKS_PER_SEC)<<" sekund."<<endl;
     delete[] tablica3;
+    }
+}
 
     return 0;
 };
