@@ -248,7 +248,7 @@ ruch minimax(int ilosc_win, int rozmiar,int depth,  int alpha, int beta, bool gr
     }
    // cout<<"DEKLARACJA BEST_MOVE ";
 
-    if ((ile_wolnych(rozmiar, plansza) == 0) || sprawdz_wygrana(rozmiar, ilosc_win, plansza)!='n' || depth >= 9  ){
+    if ((ile_wolnych(rozmiar, plansza) == 0) || sprawdz_wygrana(rozmiar, ilosc_win, plansza)!='n' || depth >= 6  ){
         //cout<<"KONIEC ";
         if(sprawdz_wygrana(rozmiar, ilosc_win, plansza)==marker)
         best_score=  100;
@@ -268,13 +268,18 @@ ruch minimax(int ilosc_win, int rozmiar,int depth,  int alpha, int beta, bool gr
     for(int i =0; i< ile_wolnych(rozmiar,plansza); i++){
         ruch curr_move = tab_wolnych_ruchow[i];
         
-        zapisz_do_planszy(curr_move.wiersz, curr_move.kolumna, marker, plansza);
+        if(gracz){
+            zapisz_do_planszy(curr_move.wiersz, curr_move.kolumna, marker, plansza);
+        }
+        else{
+           zapisz_do_planszy(curr_move.wiersz, curr_move.kolumna, pmarker, plansza); 
+        }
 
         if(gracz){
-            int score = minimax(ilosc_win, rozmiar,depth+1,  alpha, beta, false, pmarker, plansza).wynik;// + ile_wolnych(rozmiar, plansza);
+            int score = minimax(ilosc_win, rozmiar,depth+1,  alpha, beta, false, marker, plansza).wynik;// + ile_wolnych(rozmiar, plansza);
             //score-=depth;
-            if(best_score < (score - 10*depth )){
-                best_score = score - 10*depth;
+            if(best_score < (score - depth )){
+                best_score = score - depth;
                 best_move = curr_move;
 
                 alpha = max(alpha, best_score);
@@ -287,8 +292,8 @@ ruch minimax(int ilosc_win, int rozmiar,int depth,  int alpha, int beta, bool gr
         else{
             int score = minimax(ilosc_win, rozmiar,depth+1, alpha, beta, true, marker, plansza).wynik;// - ile_wolnych(rozmiar, plansza);
             //score+=depth;
-            if(best_score > (score +10*depth)){
-                best_score = score + 10*depth  ;
+            if(best_score > (score + depth)){
+                best_score = score + depth  ;
                 best_move = curr_move;
 
                 beta = min(beta, best_score);
